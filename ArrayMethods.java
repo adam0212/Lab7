@@ -6,10 +6,14 @@ import java.util.Arrays;
  * 3) computes the sum and average of all the elements of the array
  * 4) finds the largest element in the array and its index
  * 5) prints out all the elements in the array seperated by commas
+ * 6) finds the index of and lists all instances of a specific element
+ * 7) gets the original array
+ * 8) makes a copy of the original array
+ * 9) makes a new array with the elements of the original in reverse order
  *
  * @author Adam Shaheen adamhshaheen@gmail.com
- * @version v1.0
- * @since 4/19/2026
+ * @version v1.1
+ * @since 4/26/2026
  */
 public class ArrayMethods
 {
@@ -98,4 +102,81 @@ public class ArrayMethods
         System.out.println("}");
 
     }
+
+    /**
+    finds the index of the last time a specific integer is found in the array
+
+    @param key the integer the user wants to find the last usage of
+    @return the index of the last time key is found in the array 
+     */
+    public int findLast(int key)
+    {
+        int lastPlace = -1;
+        for(int i = 0; i < (myArray.length)-1; i++){
+            if(myArray[i] == key){
+                lastPlace = i;
+            }
+        }
+        return lastPlace;
+    }
+
+    /**
+    finds the index of all instances of a specific integer in the array
+
+    @param key the integer the user wants to find instances of
+    @return an array with all the indices where the integer key occurs 
+     */
+    public int[] findAll(int key)
+    {
+        int a = 0, instances = 0;
+        for(int i : myArray){
+            if(i == key){
+                instances++;
+            }
+        }
+        int[] list = new int[instances];
+        for(int i = 0; i < (myArray.length)-1; i++){
+            if(myArray[i] == key){
+                list[a] = i;
+                a++;
+            }
+        }
+        return list;
+    }
+
+    /**
+    gets the original array
+
+    @return the original array
+     */
+    public int[] getArray()
+    {
+        return myArray;
+    }
+
+    /**
+    makes a copy of the original array
+
+    @return the copy of the original array
+     */
+    public int[] copyArray()
+    {
+        int[] arrayCopy;
+        return arrayCopy = Arrays.copyOf(myArray, myArray.length);  
+    }
+
+    /**
+    puts the elements of the original array in reverse order
+
+    @return an array with the elements in the original array in reverse order
+     */
+    public int[] reverseArray(int[] inArray)
+    {
+        int[] reverse = new int[myArray.length];
+        for(int i = 0; i < (myArray.length); i++){
+            reverse[i] = inArray[myArray.length-i-1];
+        }
+        return reverse;
+    }
+
 }
